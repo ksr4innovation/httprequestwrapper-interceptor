@@ -9,7 +9,7 @@ public class DemoController {
 	
 	@PostMapping(value = "/person",consumes = {"application/json"})
 	public Person sayHi(@RequestBody Person person) {
-		System.out.println(" Enter into DemoController");
+		System.out.println("  Enter into DemoController latency added");
 		try {
 		Thread.sleep(5000);
 		}catch(Exception e) {
