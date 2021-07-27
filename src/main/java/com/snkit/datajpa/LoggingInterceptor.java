@@ -20,7 +20,7 @@ public class LoggingInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-		System.out.println("  From LoggingInterceptor preHandle HandlerInterceptor");
+		System.out.println("  execution time Interceptor added From LoggingInterceptor preHandle HandlerInterceptor");
 		
 		DemoRequestWrapper requestWrapper = new DemoRequestWrapper(request);
 		
