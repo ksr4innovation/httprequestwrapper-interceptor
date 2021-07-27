@@ -19,7 +19,7 @@ public class DemoRequestWrapper extends HttpServletRequestWrapper {
 
 	public DemoRequestWrapper(HttpServletRequest request) throws IOException {
 		super(request);
-
+		System.out.println("  DemoRequestWrapper constructor HttpServletRequestWrapper");
 		InputStream stream = request.getInputStream();
 		
 		
@@ -51,6 +51,7 @@ public class DemoRequestWrapper extends HttpServletRequestWrapper {
 
 	 @Override
 	 public ServletInputStream getInputStream() throws IOException {
+		System.out.println("  getInputStream");
 	   final ByteArrayInputStream byteArrayInputStream = new     ByteArrayInputStream(body.getBytes());
 	   ServletInputStream servletInputStream = new ServletInputStream() {
 	     public int read() throws IOException {
@@ -79,6 +80,7 @@ public class DemoRequestWrapper extends HttpServletRequestWrapper {
 
 	 @Override
 	 public BufferedReader getReader() throws IOException {
+		 System.out.println("  getReader");
 	   return new BufferedReader(new InputStreamReader(this.getInputStream()));
 	 }
 
