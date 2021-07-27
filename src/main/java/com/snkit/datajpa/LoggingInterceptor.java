@@ -20,7 +20,7 @@ public class LoggingInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-		System.out.println("  From LoggingInterceptor preHandle");
+		System.out.println("  From LoggingInterceptor preHandle HandlerInterceptor");
 		
 		DemoRequestWrapper requestWrapper = new DemoRequestWrapper(request);
 		
@@ -38,7 +38,7 @@ public class LoggingInterceptor implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			@Nullable ModelAndView modelAndView) throws Exception {
 		
-		System.out.println("  From LoggingInterceptor postHandle");
+		System.out.println("  From LoggingInterceptor postHandle  HandlerInterceptor");
 		
 		 long startTime = (Long)request.getAttribute("startTime");    
 		    long endTime = System.currentTimeMillis();
