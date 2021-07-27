@@ -1,10 +1,13 @@
 package com.snkit.datajpa;
 
+import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
@@ -29,9 +32,20 @@ public class LoggingInterceptor implements HandlerInterceptor {
 		long startTime = System.currentTimeMillis();
 	    request.setAttribute("startTime", startTime);
 	    request.setAttribute("requestId", requestId);
-		
 
-		return true;
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, String> map = mapper.readValue(requestWrapper.getBody(), Map.class);
+
+		Optional<EmpEntity> empEntityOptional = empRepository.findByName(map.get("name"));
+
+		if (empEntityOptional.isPresent()) {
+                  System.out.println("Employee has privilege ");
+			return true;
+		} else {
+			System.out.println("Employee is having  Insufficient privilege  ");
+			throw new Exception("Insufficient privilege ");
+		}
+
 	}
 
 	
