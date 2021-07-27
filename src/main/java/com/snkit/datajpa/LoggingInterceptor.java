@@ -24,7 +24,7 @@ public class LoggingInterceptor implements HandlerInterceptor {
 		
 		DemoRequestWrapper requestWrapper = new DemoRequestWrapper(request);
 		
-		System.out.println("  From LoggingInterceptor preHandle   request body value  "+requestWrapper.getBody());
+		System.out.println("  start time added in request From LoggingInterceptor preHandle   request body value  "+requestWrapper.getBody());
 		String requestId = UUID.randomUUID().toString();
 		long startTime = System.currentTimeMillis();
 	    request.setAttribute("startTime", startTime);
@@ -44,7 +44,7 @@ public class LoggingInterceptor implements HandlerInterceptor {
 		    long endTime = System.currentTimeMillis();
 		    long executeTime = endTime - startTime;
 		    
-		    System.out.println("  From LoggingInterceptor execution time taken end point "
+		    System.out.println("  Computing method execution time From LoggingInterceptor execution time taken end point "
 		    +request.getRequestURL()+"  execution time   "+executeTime);
 	}
 
